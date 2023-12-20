@@ -1,11 +1,31 @@
-import CostItem from "./components/CostItems";
+import Costs from "./components/Costs";
+
 
 function App() {
+
+  const costs = [
+    {
+      date: new Date(2021, 2, 12),
+      description: 'Холодильник',
+      amount: 999.99
+    },
+    {
+      date: new Date(2021, 2, 12),
+      description: 'Холодильник',
+      amount: 999.99
+    },
+    {
+      date: new Date(2021, 2, 12),
+      description: 'Холодильник',
+      amount: 999.99
+    }
+  ];
+
+
   return (
     <div>
-      <CostItem></CostItem>
+      <Costs costs={costs}/>
     </div>
-
   );
 }
 
