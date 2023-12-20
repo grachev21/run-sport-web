@@ -2,7 +2,7 @@
 
 import './Card.css';
 
-function Card(props) {
+const Card = (props) => {
   // Создаем переменную для того чтобы можно было в 
   // элементе card использовать классы
   const classes = 'card ' + props.className;
