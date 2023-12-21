@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './CostForm.css'
 
 
-const CostForm = () => {
+const CostForm = (props) => {
 
   // Начальное состояние для input укажем в виде пустой строки
   const [inputName, setInputName] = useState('');
@@ -34,7 +34,9 @@ const CostForm = () => {
       amount: inputAmount,
       date: new Date(inputDate)
     };
-    console.log(costData);
+
+    // Передаем данные через props в NewCost вызывая здесь его функцию
+    props.onSaveCostData(costData)
     // Удалаяет данные в input после того как вы ввели данные
     setInputName('');
     setInputAmount('');
