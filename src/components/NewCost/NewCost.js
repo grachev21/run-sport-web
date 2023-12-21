@@ -1,7 +1,7 @@
 import CostForm from './CostForm.js';
 import './NewCost.css';
 
-const NewCost = () => {
+const NewCost = (props) => {
 
     const onSaveCostDataHandler = (inputCostData) => {
         // Извлекаем данные и добавляем id
@@ -9,7 +9,8 @@ const NewCost = () => {
             ...inputCostData,
             id:Math.random().toString()
         }
-        console.log(costData)
+        props.onAddCost(costData)
+        // console.log(costData)
     }
     return (
         <div className='new-cost'>
