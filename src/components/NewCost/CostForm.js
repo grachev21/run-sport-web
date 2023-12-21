@@ -5,24 +5,40 @@ import './CostForm.css'
 const CostForm = () => {
 
   // Начальное состояние для input укажем в виде пустой строки
-  const [name, setName] = useState('');
-  const [cost, setAmount] = useState('');
-  const [date, setDate] = useState('');
+  const [inputName, setInputName] = useState('');
+  const [inputAmount, setInputAmount] = useState('');
+  const [inputDate, setInputDate] = useState('');
 
 
   const nameChangeHandler = (event) => {
-    setName(event.target.value);
+    setInputName(event.target.value);
   };
 
   const amountChangeHandler = (event) => {
-    setAmount(event.target.value)
+    setInputAmount(event.target.value)
   };
 
   const dateChangeHandler = (event) => {
-    setDate(event.target.value)
+    setInputDate(event.target.value)
   };
 
-    return <form>
+  // Эта функция принимает данные из формы
+  const submitHandler = (event) => {
+    // Предотвращает дефолтное поведение браузера.
+    // Теперь при нажатии на кнопку, браузер не будет 
+    // обновляться
+    event.preventDefault();
+
+    const costData = {
+      name: inputName,
+      amount: inputAmount,
+      date: new Date(inputDate)
+    };
+    console.log(costData);
+  };
+
+    return (
+    <form onSubmit={submitHandler}>
       <div className='new-cost__controls'>
         <div className='new-cost__control'>
           <label>Название</label>
@@ -41,7 +57,8 @@ const CostForm = () => {
         </div>
       </div>
     </form>
-}
+    );
+};
 
 export default CostForm;
 
