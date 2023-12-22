@@ -1,10 +1,9 @@
+import React, {useState} from 'react';
 import NewCost from './components/NewCost/NewCost.js';
 import Costs from "./components/Costs/Costs";
 
 
-const App = () => {
-
-  const costs = [
+  const INITIAL_COSTS = [
     {
       id: 'c1',
       date: new Date(2021, 3, 22),
@@ -14,7 +13,7 @@ const App = () => {
     {
       id: 'c2',
       date: new Date(2021, 2, 23),
-      description: 'Холодильник',
+      description: 'Банки',
       amount: 2234
     },
     {
@@ -22,18 +21,28 @@ const App = () => {
       date: new Date(2020, 2, 22),
       description: 'Холодильник',
       amount: 98798
-    }
+    },
   ];
 
-  const addCostHandler = (cost) => {
-    console.log(cost, 'App')
+const App = () => {
 
-  }
+  const [costs, setCosts] = useState(INITIAL_COSTS);
+
+
+  // Эта функция запускается каждый раз когда добавляется
+  // новый расход
+  const addCostHandler = (cost) => {
+    // Добавляем новый расход
+    setCosts(prevCosts => {
+      return [cost, ...prevCosts]
+    });
+
+  };
 
   return (
     <div>
-      <NewCost onAddCost={addCostHandler}/>
-      <Costs costs={costs}/>
+      <NewCost onAddCost={addCostHandler} />
+      <Costs costs={costs} />
     </div>
   );
 }
